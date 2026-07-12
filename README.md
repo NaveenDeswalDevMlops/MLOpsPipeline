@@ -242,14 +242,16 @@ minikube addons enable ingress
 ```
 
 ### 2. Build and load the images into Minikube
-Use the local Docker daemon so Minikube can reuse the images without pushing to a remote registry. Build the API image and the dedicated model-service image separately:
+Use the local Docker daemon so Minikube can reuse the images without pushing to a remote registry. Build the API image, the dedicated model-service image, and the dashboard image separately:
 ```bash
 cd /Users/naveendeswal/Documents/Semester\ 3/Mlops/MLopsAssignment1/aiml_assignment
 eval $(minikube docker-env)
 docker build -t heart-disease-api:latest .
 docker build -f model_service/Dockerfile -t heart-disease-model-service:latest .
+docker build -f dashboard/Dockerfile -t heart-disease-dashboard:latest .
 minikube image load heart-disease-api:latest
 minikube image load heart-disease-model-service:latest
+minikube image load heart-disease-dashboard:latest
 ```
 
 ### 3. Deploy the Kubernetes manifests
@@ -306,9 +308,8 @@ The GitHub Actions workflow in `.github/workflows/ci.yml` performs the following
 4. Install requirements
 5. Run linting
 6. Run pytest
-7. Validate FastAPI imports
+7. Validate FastAPI imports,Dashboard, DataPipeline, MLpipeline, K8s scripts, DockerImage
 8. Build the Docker image
-9. Tag the Docker image
 10. Upload the image artifact
 
 > The workflow intentionally does not try to connect to your local Minikube cluster. Local Minikube deployment is a manual follow-up step after the CI pipeline succeeds.

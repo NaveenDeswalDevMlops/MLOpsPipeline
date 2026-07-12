@@ -4,6 +4,7 @@ numpy
 requests
 plotly
 psutil
+setuptools<81
 mlflow==2.5.0
 prefect==2.14.4
 griffe

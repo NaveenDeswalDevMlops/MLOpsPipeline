@@ -11,6 +11,8 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from prometheus_fastapi_instrumentator import Instrumentator
 
+from project_logger import get_logger
+
 from .schemas import PredictionRequest, PredictionResponse
 
 app = FastAPI(
@@ -26,6 +28,8 @@ LEGACY_MODEL_PATH = MODEL_DIR / "best_model.pkl"
 PIPELINE_STATUS_PATH = Path("artifacts/pipeline_status.json")
 MODEL_VERSION = "v1.0-heart-uci"
 MODEL_SERVICE_URL = os.getenv("MODEL_SERVICE_URL", "").rstrip("/")
+API_LOGGER = get_logger("heart_disease_api", "api.log")
+PREDICTION_LOGGER = get_logger("heart_disease_prediction", "prediction.log")
 
 
 @app.exception_handler(RequestValidationError)
@@ -38,11 +42,13 @@ async def validation_exception_handler(_request: Request, exc: RequestValidation
 
 @app.get("/")
 def read_root():
+    API_LOGGER.info("Root endpoint requested")
     return {"message": "Welcome to the Heart Disease UCI API. Navigate to /docs for Swagger UI."}
 
 
 @app.get("/health")
 def health_check():
+    API_LOGGER.info("Health check endpoint requested")
     return {"status": "healthy", "timestamp": datetime.now(timezone.utc).isoformat()}
 
 
@@ -100,6 +106,7 @@ def _prediction_probability(model, features: pd.DataFrame) -> float:
 
 @app.post("/predict", response_model=PredictionResponse)
 def predict(request: PredictionRequest):
+    API_LOGGER.info("Inference request received via ingress route: %s", request.model_dump())
     if MODEL_SERVICE_URL:
         try:
             response = requests.post(
@@ -108,8 +115,16 @@ def predict(request: PredictionRequest):
                 timeout=5,
             )
             response.raise_for_status()
-            return PredictionResponse(**response.json())
-        except requests.RequestException:
+            payload = response.json()
+            API_LOGGER.info("Inference response received from model service: %s", payload)
+            PREDICTION_LOGGER.info(
+                "Prediction request served by model service: payload=%s response=%s",
+                request.model_dump(),
+                payload,
+            )
+            return PredictionResponse(**payload)
+        except requests.RequestException as exc:
+            API_LOGGER.warning("Model service request failed for ingress prediction call: %s", exc)
             pass
 
     start_time = perf_counter()
@@ -123,12 +138,14 @@ def predict(request: PredictionRequest):
         prediction = int(model.predict(features)[0])
         probability = float(_prediction_probability(model, features))
     except ValueError as exc:
+        API_LOGGER.error("Prediction failed due to model input mismatch: %s", exc)
         raise HTTPException(status_code=500, detail=f"Model input shape mismatch: {exc}") from exc
     except AttributeError as exc:
+        API_LOGGER.error("Prediction failed due to model interface mismatch: %s", exc)
         raise HTTPException(status_code=500, detail=f"Loaded model does not support the expected prediction interface: {exc}") from exc
 
     response_time_ms = round((perf_counter() - start_time) * 1000, 3)
-    return PredictionResponse(
+    response_payload = PredictionResponse(
         prediction=prediction,
         probability=probability,
         model_version=MODEL_VERSION,
@@ -137,3 +154,10 @@ def predict(request: PredictionRequest):
         model_used=type(model).__name__,
         churn_prediction=prediction,
     )
+    API_LOGGER.info("Inference response ready from local model: %s", response_payload.model_dump())
+    PREDICTION_LOGGER.info(
+        "Prediction request served by API fallback: payload=%s response=%s",
+        request.model_dump(),
+        response_payload.model_dump(),
+    )
+    return response_payload

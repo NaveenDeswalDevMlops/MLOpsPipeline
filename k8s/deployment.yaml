@@ -21,13 +21,24 @@ spec:
       labels:
         app: heart-disease-api
     spec:
+      volumes:
+        - name: shared-workspace
+          persistentVolumeClaim:
+            claimName: heart-disease-pvc
       containers:
         - name: heart-disease-api
           image: heart-disease-api:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Never
           ports:
             - containerPort: 8000
               protocol: TCP
+          volumeMounts:
+            - name: shared-workspace
+              mountPath: /workspace/logs
+              subPath: logs
+            - name: shared-workspace
+              mountPath: /workspace/dashboard
+              subPath: dashboard
           env:
             - name: PYTHONUNBUFFERED
               value: "1"
@@ -89,7 +100,7 @@ spec:
       containers:
         - name: heart-disease-model-service
           image: heart-disease-model-service:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Never
           ports:
             - containerPort: 8001
               protocol: TCP
@@ -149,13 +160,24 @@ spec:
       labels:
         app: heart-disease-dashboard
     spec:
+      volumes:
+        - name: shared-workspace
+          persistentVolumeClaim:
+            claimName: heart-disease-pvc
       containers:
         - name: heart-disease-dashboard
           image: heart-disease-dashboard:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Never
           ports:
             - containerPort: 8501
               protocol: TCP
+          volumeMounts:
+            - name: shared-workspace
+              mountPath: /workspace/logs
+              subPath: logs
+            - name: shared-workspace
+              mountPath: /workspace/dashboard
+              subPath: dashboard
           env:
             - name: WORKSPACE
               value: "/workspace"

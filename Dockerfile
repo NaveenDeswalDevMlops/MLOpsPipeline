@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1.4
 FROM python:3.10-slim
 
 # Prevent interactive prompts
@@ -23,15 +24,11 @@ RUN apt-get update && \
 # Copy dependency files first for Docker layer caching
 COPY requirements.txt .
 
-# Upgrade packaging tools
-RUN python -m pip install --upgrade pip setuptools wheel
-
-# Install Python dependencies
-RUN pip install \
-    --no-cache-dir \
-    --timeout=180 \
-    --retries=5 \
-    -r requirements.txt
+# Keep setuptools below 81 so mlflow==2.5.0 can still import pkg_resources.
+# Reuse pip's download cache across rebuilds.
+RUN --mount=type=cache,target=/root/.cache/pip \
+    python -m pip install --upgrade pip "setuptools<81" wheel && \
+    python -m pip install -r requirements.txt
 
 # Copy application source
 COPY . .

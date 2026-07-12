@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from time import perf_counter
 
+import joblib
 import mlflow
 import pandas as pd
 from fastapi import FastAPI, HTTPException
@@ -57,6 +58,17 @@ MODEL = None
 MODEL_VERSION = ""
 
 
+def _load_local_model() -> tuple[object, str]:
+    candidate_paths = [
+        MODEL_CACHE_DIR / "model.joblib",
+        MODEL_CACHE_DIR / "best_model.pkl",
+    ]
+    for path in candidate_paths:
+        if path.exists():
+            return joblib.load(path), path.name
+    raise FileNotFoundError("No local model artifact found in /workspace/models")
+
+
 def _load_model_from_registry() -> tuple[object, str]:
     client = mlflow.MlflowClient()
     selected_version = None
@@ -66,7 +78,7 @@ def _load_model_from_registry() -> tuple[object, str]:
     except Exception:
         model_versions = client.search_model_versions(f"name = '{MODEL_NAME}'")
         for model_version in model_versions:
-            if model_version.current_stage == MODEL_STAGE:
+            if getattr(model_version, "current_stage", None) == MODEL_STAGE:
                 selected_version = model_version
                 break
 
@@ -81,7 +93,10 @@ def _load_model_from_registry() -> tuple[object, str]:
 @app.on_event("startup")
 def startup_event():
     global MODEL, MODEL_VERSION
-    MODEL, MODEL_VERSION = _load_model_from_registry()
+    try:
+        MODEL, MODEL_VERSION = _load_model_from_registry()
+    except Exception:
+        MODEL, MODEL_VERSION = _load_local_model()
 
 
 @app.get("/health")

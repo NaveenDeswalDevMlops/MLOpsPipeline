@@ -1,0 +1,356 @@
+2026-07-12 13:55:24,382 INFO dashboard_api_service Fetching JSON metadata from http://api:8000/metadata
+2026-07-12 13:55:32,391 WARNING dashboard_api_service JSON request failed for http://api:8000/metadata: HTTPConnectionPool(host='api', port=8000): Max retries exceeded with url: /metadata (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff1c723130>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))
+2026-07-12 13:55:32,393 INFO dashboard_api_service Fetching JSON metadata from http://api:8000/health
+2026-07-12 13:55:32,557 WARNING dashboard_api_service JSON request failed for http://api:8000/health: HTTPConnectionPool(host='api', port=8000): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff1c720c10>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+2026-07-12 13:55:36,969 INFO dashboard_api_service Fetching JSON metadata from http://api:8000/metadata
+2026-07-12 13:55:36,983 WARNING dashboard_api_service JSON request failed for http://api:8000/metadata: HTTPConnectionPool(host='api', port=8000): Max retries exceeded with url: /metadata (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff1c5eec50>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+2026-07-12 13:55:36,983 INFO dashboard_api_service Fetching JSON metadata from http://api:8000/health
+2026-07-12 13:55:36,990 WARNING dashboard_api_service JSON request failed for http://api:8000/health: HTTPConnectionPool(host='api', port=8000): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff1c5ef070>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+2026-07-12 13:55:37,058 INFO dashboard_api_service Health probing http://api:8000/health
+2026-07-12 13:55:37,063 WARNING dashboard_api_service Health probe failed for http://api:8000/health: HTTPConnectionPool(host='api', port=8000): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff1c50bfd0>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+2026-07-12 13:55:37,063 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 13:55:37,065 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 13:55:37,065 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 13:55:37,075 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 13:55:52,802 INFO dashboard_api_service Fetching JSON metadata from http://api:8000/metadata
+2026-07-12 13:55:52,811 WARNING dashboard_api_service JSON request failed for http://api:8000/metadata: HTTPConnectionPool(host='api', port=8000): Max retries exceeded with url: /metadata (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff1c721ed0>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+2026-07-12 13:55:52,812 INFO dashboard_api_service Fetching JSON metadata from http://api:8000/health
+2026-07-12 13:55:52,818 WARNING dashboard_api_service JSON request failed for http://api:8000/health: HTTPConnectionPool(host='api', port=8000): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff1c720370>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+2026-07-12 13:55:52,890 INFO dashboard_api_service Health probing http://api:8000/health
+2026-07-12 13:55:52,895 WARNING dashboard_api_service Health probe failed for http://api:8000/health: HTTPConnectionPool(host='api', port=8000): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff1c5099c0>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+2026-07-12 13:55:52,896 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 13:55:52,898 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 13:55:52,899 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 13:55:52,901 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 13:56:08,813 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 13:56:08,820 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 13:56:08,821 INFO dashboard_api_service Health probing http://prefect:4200/api/flows?limit=20
+2026-07-12 13:56:08,828 WARNING dashboard_api_service Health probe failed for http://prefect:4200/api/flows?limit=20: 405 Client Error: Method Not Allowed for url: http://prefect:4200/api/flows/?limit=20
+2026-07-12 13:56:09,812 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 13:56:09,818 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 13:56:09,818 INFO dashboard_api_service Health probing http://prefect:4200/api/flows?limit=20
+2026-07-12 13:56:09,823 WARNING dashboard_api_service Health probe failed for http://prefect:4200/api/flows?limit=20: 405 Client Error: Method Not Allowed for url: http://prefect:4200/api/flows/?limit=20
+2026-07-12 13:56:10,349 INFO dashboard_api_service Health probing http://api:8000/health
+2026-07-12 13:56:10,356 WARNING dashboard_api_service Health probe failed for http://api:8000/health: HTTPConnectionPool(host='api', port=8000): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff1c5ecee0>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+2026-07-12 13:56:10,357 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 13:56:10,359 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 13:56:10,359 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 13:56:10,362 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 13:56:10,871 INFO dashboard_api_service Fetching JSON metadata from http://api:8000/model-info
+2026-07-12 13:56:10,889 WARNING dashboard_api_service JSON request failed for http://api:8000/model-info: HTTPConnectionPool(host='api', port=8000): Max retries exceeded with url: /model-info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff1c5eca00>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+2026-07-12 13:56:12,041 INFO dashboard_api_service Health probing http://api:8000/health
+2026-07-12 13:56:12,051 WARNING dashboard_api_service Health probe failed for http://api:8000/health: HTTPConnectionPool(host='api', port=8000): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff1c5ef7f0>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+2026-07-12 13:56:12,051 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 13:56:12,054 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 13:56:12,054 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 13:56:12,058 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 13:56:12,565 INFO dashboard_api_service Fetching JSON metadata from http://api:8000/model-info
+2026-07-12 13:56:12,575 WARNING dashboard_api_service JSON request failed for http://api:8000/model-info: HTTPConnectionPool(host='api', port=8000): Max retries exceeded with url: /model-info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff1c5ecc70>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+2026-07-12 13:56:33,608 INFO dashboard_api_service Fetching JSON metadata from http://api:8000/metadata
+2026-07-12 13:56:33,617 WARNING dashboard_api_service JSON request failed for http://api:8000/metadata: HTTPConnectionPool(host='api', port=8000): Max retries exceeded with url: /metadata (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff1c5ec730>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+2026-07-12 13:56:38,439 INFO dashboard_api_service Fetching JSON metadata from http://api:8000/metadata
+2026-07-12 13:56:38,447 WARNING dashboard_api_service JSON request failed for http://api:8000/metadata: HTTPConnectionPool(host='api', port=8000): Max retries exceeded with url: /metadata (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff1c5ef3d0>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+2026-07-12 14:02:44,937 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/metadata
+2026-07-12 14:02:48,942 WARNING dashboard_api_service JSON request failed for http://heart-disease.local/metadata: HTTPConnectionPool(host='heart-disease.local', port=80): Max retries exceeded with url: /metadata (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff352bec80>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2026-07-12 14:02:48,943 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/health
+2026-07-12 14:02:52,948 WARNING dashboard_api_service JSON request failed for http://heart-disease.local/health: HTTPConnectionPool(host='heart-disease.local', port=80): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff352bebc0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2026-07-12 14:02:53,110 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:02:57,115 WARNING dashboard_api_service Health probe failed for http://heart-disease.local/health: HTTPConnectionPool(host='heart-disease.local', port=80): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff3439fbe0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2026-07-12 14:02:57,115 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:02:57,122 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:02:57,122 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:02:57,133 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:03:08,747 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:03:12,751 WARNING dashboard_api_service Health probe failed for http://heart-disease.local/health: HTTPConnectionPool(host='heart-disease.local', port=80): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff35156ad0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2026-07-12 14:03:12,752 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:03:12,771 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:03:12,772 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:03:12,777 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:03:13,287 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/model-info
+2026-07-12 14:03:17,293 WARNING dashboard_api_service JSON request failed for http://heart-disease.local/model-info: HTTPConnectionPool(host='heart-disease.local', port=80): Max retries exceeded with url: /model-info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff35354bb0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2026-07-12 14:03:29,057 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:03:30,062 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/metadata
+2026-07-12 14:03:33,062 WARNING dashboard_api_service Health probe failed for http://heart-disease.local/health: HTTPConnectionPool(host='heart-disease.local', port=80): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff345ed7b0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2026-07-12 14:03:33,062 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:03:33,075 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:03:33,075 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:03:33,080 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:03:34,066 WARNING dashboard_api_service JSON request failed for http://heart-disease.local/metadata: HTTPConnectionPool(host='heart-disease.local', port=80): Max retries exceeded with url: /metadata (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff352beb60>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2026-07-12 14:03:34,067 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/health
+2026-07-12 14:03:38,073 WARNING dashboard_api_service JSON request failed for http://heart-disease.local/health: HTTPConnectionPool(host='heart-disease.local', port=80): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff345ed570>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2026-07-12 14:03:38,150 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:03:42,156 WARNING dashboard_api_service Health probe failed for http://heart-disease.local/health: HTTPConnectionPool(host='heart-disease.local', port=80): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff344ead10>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2026-07-12 14:03:42,157 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:03:42,163 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:03:42,164 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:03:42,171 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:05:29,503 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/metadata
+2026-07-12 14:05:29,519 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/metadata with status 200
+2026-07-12 14:05:29,519 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/health
+2026-07-12 14:05:29,529 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:05:29,684 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:05:29,691 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:05:29,691 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:05:29,705 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:05:29,705 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:05:29,712 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:05:34,295 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:05:34,306 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:05:34,306 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:05:34,309 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:05:34,309 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:05:34,311 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:05:34,818 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/model-info
+2026-07-12 14:05:34,836 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/model-info with status 200
+2026-07-12 14:05:38,959 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:05:38,972 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:05:38,972 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:05:38,980 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:05:38,980 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:05:38,983 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:05:39,495 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/model-info
+2026-07-12 14:05:39,512 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/model-info with status 200
+2026-07-12 14:06:02,469 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:06:02,479 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:06:02,480 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:06:02,483 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:06:02,483 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:06:02,485 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:06:02,993 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/model-info
+2026-07-12 14:06:03,008 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/model-info with status 200
+2026-07-12 14:06:04,009 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:06:04,018 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:06:04,018 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:06:04,022 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:06:04,022 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:06:04,026 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:06:04,534 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/model-info
+2026-07-12 14:06:04,545 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/model-info with status 200
+2026-07-12 14:06:04,679 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/metadata
+2026-07-12 14:06:04,685 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/metadata with status 200
+2026-07-12 14:06:04,685 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/health
+2026-07-12 14:06:04,691 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:06:04,759 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:06:04,764 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:06:04,765 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:06:04,768 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:06:04,768 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:06:04,770 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:06:07,744 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/metadata
+2026-07-12 14:06:07,754 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/metadata with status 200
+2026-07-12 14:06:07,754 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/health
+2026-07-12 14:06:07,761 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:06:07,827 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:06:07,832 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:06:07,832 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:06:07,835 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:06:07,835 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:06:07,837 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:06:11,852 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:06:11,863 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:06:11,863 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:06:11,866 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:06:11,866 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:06:11,869 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:06:12,376 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/model-info
+2026-07-12 14:06:12,385 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/model-info with status 200
+2026-07-12 14:06:14,171 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:06:14,180 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:06:14,181 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:06:14,184 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:06:14,184 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:06:14,189 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:09:16,799 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/metadata
+2026-07-12 14:09:16,813 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/metadata with status 200
+2026-07-12 14:09:16,813 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/health
+2026-07-12 14:09:16,821 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:09:16,894 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:09:16,903 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:09:16,903 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:09:16,906 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:09:16,907 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:09:16,910 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:09:49,219 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/metadata
+2026-07-12 14:09:49,241 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/metadata with status 200
+2026-07-12 14:09:49,242 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/health
+2026-07-12 14:09:49,249 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:09:49,343 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:09:49,351 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:09:49,351 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:09:49,359 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:09:49,359 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:09:49,364 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:09:49,798 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:09:49,803 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:09:49,803 INFO dashboard_api_service Health probing http://prefect:4200/api/flows?limit=20
+2026-07-12 14:09:49,807 WARNING dashboard_api_service Health probe failed for http://prefect:4200/api/flows?limit=20: 405 Client Error: Method Not Allowed for url: http://prefect:4200/api/flows/?limit=20
+2026-07-12 14:09:51,529 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:09:51,537 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:09:51,537 INFO dashboard_api_service Health probing http://prefect:4200/api/flows?limit=20
+2026-07-12 14:09:51,541 WARNING dashboard_api_service Health probe failed for http://prefect:4200/api/flows?limit=20: 405 Client Error: Method Not Allowed for url: http://prefect:4200/api/flows/?limit=20
+2026-07-12 14:09:52,116 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/metadata
+2026-07-12 14:09:52,125 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/metadata with status 200
+2026-07-12 14:09:52,125 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/health
+2026-07-12 14:09:52,133 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:09:52,213 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:09:52,222 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:09:52,223 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:09:52,228 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:09:52,228 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:09:52,234 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:10:12,084 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/metadata
+2026-07-12 14:10:12,090 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/metadata with status 200
+2026-07-12 14:10:12,091 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/health
+2026-07-12 14:10:12,097 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:10:12,167 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:10:12,174 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:10:12,174 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:10:12,177 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:10:12,177 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:10:12,180 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:17:23,917 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/metadata
+2026-07-12 14:17:23,934 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/metadata with status 200
+2026-07-12 14:17:23,935 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/health
+2026-07-12 14:17:23,941 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:17:24,065 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:17:24,075 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:17:24,075 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:17:24,078 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:17:24,079 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:17:24,093 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:17:37,580 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/metadata
+2026-07-12 14:17:37,592 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/metadata with status 200
+2026-07-12 14:17:37,593 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/health
+2026-07-12 14:17:37,600 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:17:37,682 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:17:37,689 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:17:37,689 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:17:37,698 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:17:37,698 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:17:37,701 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:27:30,605 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/metadata
+2026-07-12 14:27:30,627 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/metadata with status 200
+2026-07-12 14:27:30,627 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/health
+2026-07-12 14:27:30,635 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:27:30,727 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:27:30,731 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:27:30,732 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:27:30,736 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:27:30,736 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:27:30,743 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:27:32,783 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:27:32,792 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:27:32,793 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:27:32,795 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:27:32,795 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:27:32,797 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:29:38,379 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/metadata
+2026-07-12 14:29:38,393 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/metadata with status 200
+2026-07-12 14:29:38,394 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/health
+2026-07-12 14:29:38,398 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:29:38,464 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:29:38,472 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:29:38,473 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:29:38,474 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:29:38,474 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:29:38,480 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:29:39,903 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:29:39,910 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:29:39,910 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:29:39,912 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:29:39,912 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:29:39,914 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:33:47,234 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/metadata
+2026-07-12 14:33:47,250 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/metadata with status 200
+2026-07-12 14:33:47,250 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/health
+2026-07-12 14:33:47,263 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:33:47,345 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:33:47,351 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:33:47,351 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:33:47,354 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:33:47,355 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:33:47,360 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:33:49,102 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:33:49,108 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:33:49,108 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:33:49,110 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:33:49,110 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:33:49,112 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:37:10,742 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/metadata
+2026-07-12 14:37:10,765 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/metadata with status 200
+2026-07-12 14:37:10,765 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/health
+2026-07-12 14:37:10,772 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:37:10,849 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:37:10,855 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:37:10,855 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:37:10,857 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:37:10,857 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:37:10,865 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:37:12,823 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:37:12,828 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:37:12,828 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:37:12,833 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:37:12,833 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:37:12,835 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:37:13,387 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/model-info
+2026-07-12 14:37:13,393 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/model-info with status 200
+2026-07-12 14:37:39,551 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:37:39,560 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:37:39,560 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:37:39,562 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:37:39,563 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:37:39,564 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:37:40,098 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/model-info
+2026-07-12 14:37:40,106 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/model-info with status 200
+2026-07-12 14:37:52,661 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:37:52,675 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:37:52,675 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:37:52,678 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:37:52,678 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:37:52,681 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:37:53,215 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/model-info
+2026-07-12 14:37:53,219 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/model-info with status 200
+2026-07-12 14:37:57,588 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:37:57,594 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:37:57,594 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:37:57,602 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:37:57,602 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:37:57,605 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:37:58,136 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/model-info
+2026-07-12 14:37:58,141 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/model-info with status 200
+2026-07-12 14:37:58,156 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/metadata
+2026-07-12 14:37:58,162 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/metadata with status 200
+2026-07-12 14:37:58,162 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/health
+2026-07-12 14:37:58,217 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:37:58,270 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:37:58,276 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:37:58,276 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:37:58,280 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:37:58,280 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:37:58,284 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:38:07,647 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/metadata
+2026-07-12 14:38:07,654 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/metadata with status 200
+2026-07-12 14:38:07,654 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/health
+2026-07-12 14:38:07,662 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:38:07,699 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:38:07,703 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:38:07,703 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:38:07,704 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:38:07,705 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:38:07,706 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:38:08,264 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:38:08,269 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:38:08,269 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:38:08,271 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:38:08,271 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:38:08,273 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:38:08,805 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/model-info
+2026-07-12 14:38:08,810 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/model-info with status 200
+2026-07-12 14:43:38,621 INFO dashboard_api_service Health probing http://heart-disease.local/health
+2026-07-12 14:43:38,633 INFO dashboard_api_service Health probe succeeded for http://heart-disease.local/health with status 200
+2026-07-12 14:43:38,634 INFO dashboard_api_service Health probing http://mlflow:5000/health
+2026-07-12 14:43:38,643 INFO dashboard_api_service Health probe succeeded for http://mlflow:5000/health with textual payload
+2026-07-12 14:43:38,643 INFO dashboard_api_service Health probing http://prefect:4200/api/health
+2026-07-12 14:43:38,649 INFO dashboard_api_service Health probe succeeded for http://prefect:4200/api/health with status 200
+2026-07-12 14:43:39,192 INFO dashboard_api_service Fetching JSON metadata from http://heart-disease.local/model-info
+2026-07-12 14:43:39,199 INFO dashboard_api_service JSON request succeeded for http://heart-disease.local/model-info with status 200
