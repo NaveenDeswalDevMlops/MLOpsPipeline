@@ -1,0 +1,10 @@
+artifact_location: file:///Users/naveendeswal/Documents/Semester 3/Mlops/MLopsAssignment1/aiml_assignment/mlruns/308852209444112095/models/m-4fee1ecc4270414895295f3908165833/artifacts
+creation_timestamp: 1783779336711
+experiment_id: '308852209444112095'
+last_updated_timestamp: 1783779338518
+model_id: m-4fee1ecc4270414895295f3908165833
+model_type: null
+name: preprocessing_pipeline
+source_run_id: 901433e2028d428fad7faf7417f852aa
+status: 2
+status_message: null

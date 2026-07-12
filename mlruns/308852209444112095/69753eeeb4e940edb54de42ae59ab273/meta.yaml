@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/naveendeswal/Documents/Semester 3/Mlops/MLopsAssignment1/aiml_assignment/mlruns/308852209444112095/69753eeeb4e940edb54de42ae59ab273/artifacts
+end_time: 1783779296463
+entry_point_name: ''
+experiment_id: '308852209444112095'
+lifecycle_stage: active
+run_id: 69753eeeb4e940edb54de42ae59ab273
+run_name: RandomForest
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1783779291708
+status: 3
+tags: []
+user_id: naveendeswal

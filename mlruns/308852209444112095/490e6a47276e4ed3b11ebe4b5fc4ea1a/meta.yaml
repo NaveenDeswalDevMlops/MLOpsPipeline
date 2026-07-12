@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/naveendeswal/Documents/Semester 3/Mlops/MLopsAssignment1/aiml_assignment/mlruns/308852209444112095/490e6a47276e4ed3b11ebe4b5fc4ea1a/artifacts
+end_time: 1783779333480
+entry_point_name: ''
+experiment_id: '308852209444112095'
+lifecycle_stage: active
+run_id: 490e6a47276e4ed3b11ebe4b5fc4ea1a
+run_name: LogisticRegression
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1783779326132
+status: 3
+tags: []
+user_id: naveendeswal

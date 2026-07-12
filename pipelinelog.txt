@@ -1,0 +1,19 @@
+docker exec -it aiml_assignment-api-1 python pipelines/data_pipeline.py
+Traceback (most recent call last):
+  File "/workspace/pipelines/data_pipeline.py", line 6, in <module>
+    from prefect import task, flow, get_run_logger
+  File "/usr/local/lib/python3.10/site-packages/prefect/__init__.py", line 37, in <module>
+    from prefect.runner import Runner, serve
+  File "/usr/local/lib/python3.10/site-packages/prefect/runner/__init__.py", line 1, in <module>
+    from .runner import Runner, serve
+  File "/usr/local/lib/python3.10/site-packages/prefect/runner/runner.py", line 59, in <module>
+    from prefect.client.orchestration import get_client
+  File "/usr/local/lib/python3.10/site-packages/prefect/client/orchestration.py", line 32, in <module>
+    import prefect.settings
+  File "/usr/local/lib/python3.10/site-packages/prefect/settings.py", line 93, in <module>
+    from prefect._internal.compatibility.deprecated import generate_deprecation_message
+  File "/usr/local/lib/python3.10/site-packages/prefect/_internal/compatibility/deprecated.py", line 26, in <module>
+    from prefect.utilities.callables import get_call_parameters
+  File "/usr/local/lib/python3.10/site-packages/prefect/utilities/callables.py", line 23, in <module>
+    from griffe.dataclasses import Docstring
+ModuleNotFoundError: No module named 'griffe.dataclasses'

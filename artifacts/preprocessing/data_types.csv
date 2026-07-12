@@ -1,0 +1,15 @@
+column,dtype
+age,object
+sex,object
+cp,object
+trestbps,object
+chol,object
+fbs,object
+restecg,object
+thalach,object
+exang,object
+oldpeak,object
+slope,object
+ca,object
+thal,object
+target,int64

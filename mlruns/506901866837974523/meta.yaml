@@ -1,0 +1,9 @@
+artifact_location: file:///Users/naveendeswal/Documents/Semester 3/Mlops/MLopsAssignment1/aiml_assignment/mlruns/506901866837974523
+creation_time: 1783778431029
+effective_trace_archival_retention: null
+experiment_id: '506901866837974523'
+last_update_time: 1783778431029
+lifecycle_stage: active
+name: test-exp
+trace_location: null
+workspace: default

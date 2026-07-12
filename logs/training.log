@@ -1,0 +1,96 @@
+2026-07-09 10:39:49,114 INFO ml_pipeline MLflow tracking URI set to http://mlflow:5000
+2026-07-09 10:39:49,115 INFO ml_pipeline MLflow experiment set to Customer_Attrition_Prediction
+2026-07-09 10:39:49,115 INFO ml_pipeline Starting ML pipeline
+2026-07-09 10:39:49,115 INFO ml_pipeline Loading processed data from data/processed_data.csv
+2026-07-09 10:39:52,766 INFO ml_pipeline Run RandomForest completed with metrics: {'accuracy': 0.7752365930599369, 'precision': 0.6060606060606061, 'recall': 0.46920821114369504, 'f1': 0.5289256198347108, 'roc_auc': 0.7801187572562455}
+2026-07-09 10:39:54,077 INFO ml_pipeline Run LogisticRegression completed with metrics: {'accuracy': 0.7783911671924291, 'precision': 0.625, 'recall': 0.4398826979472141, 'f1': 0.5163511187607573, 'roc_auc': 0.8053396476509536}
+2026-07-09 10:39:54,084 INFO ml_pipeline Pipeline complete. Best Model: RandomForest (F1 Score: 0.5289)
+2026-07-09 11:38:09,016 INFO ml_pipeline MLflow tracking URI set to http://mlflow:5000
+2026-07-09 11:38:09,017 INFO ml_pipeline MLflow experiment set to Customer_Attrition_Prediction
+2026-07-09 11:38:09,017 INFO ml_pipeline Starting ML pipeline
+2026-07-09 11:38:09,017 INFO ml_pipeline Loading processed data from data/processed_data.csv
+2026-07-09 11:38:13,946 INFO ml_pipeline Run RandomForest completed with metrics: {'accuracy': 0.7752365930599369, 'precision': 0.6060606060606061, 'recall': 0.46920821114369504, 'f1': 0.5289256198347108, 'roc_auc': 0.7801187572562455}
+2026-07-09 11:38:16,950 INFO ml_pipeline Run LogisticRegression completed with metrics: {'accuracy': 0.7783911671924291, 'precision': 0.625, 'recall': 0.4398826979472141, 'f1': 0.5163511187607573, 'roc_auc': 0.8053396476509536}
+2026-07-09 11:38:16,966 INFO ml_pipeline Pipeline complete. Best Model: RandomForest (F1 Score: 0.5289)
+2026-07-09 17:04:50,517 INFO ml_pipeline MLflow tracking URI set to http://mlflow:5000
+2026-07-09 17:04:50,518 INFO ml_pipeline MLflow experiment set to Customer_Attrition_Prediction
+2026-07-09 17:04:50,518 INFO ml_pipeline Starting ML pipeline
+2026-07-09 17:04:50,518 INFO ml_pipeline Loading processed data from data/processed_data.csv
+2026-07-09 17:04:52,010 INFO ml_pipeline Run RandomForest completed with metrics: {'accuracy': 0.7744479495268138, 'precision': 0.6037735849056604, 'recall': 0.46920821114369504, 'f1': 0.528052805280528, 'roc_auc': 0.7797628651058028}
+2026-07-09 17:04:52,714 INFO ml_pipeline Run LogisticRegression completed with metrics: {'accuracy': 0.7783911671924291, 'precision': 0.625, 'recall': 0.4398826979472141, 'f1': 0.5163511187607573, 'roc_auc': 0.805345974622517}
+2026-07-09 17:04:52,716 INFO ml_pipeline Pipeline complete. Best Model: RandomForest (F1 Score: 0.5281)
+2026-07-09 17:07:14,758 INFO ml_pipeline MLflow tracking URI set to http://mlflow:5000
+2026-07-09 17:07:14,758 INFO ml_pipeline MLflow experiment set to Customer_Attrition_Prediction
+2026-07-09 17:07:14,758 INFO ml_pipeline Starting ML pipeline
+2026-07-09 17:07:14,758 INFO ml_pipeline Loading raw training data from data/raw_data.csv
+2026-07-09 17:07:16,001 INFO ml_pipeline Run RandomForest completed with metrics: {'accuracy': 0.7783911671924291, 'precision': 0.6063829787234043, 'recall': 0.501466275659824, 'f1': 0.5489566613162119, 'roc_auc': 0.7880053273100563}
+2026-07-09 17:07:16,760 INFO ml_pipeline Run LogisticRegression completed with metrics: {'accuracy': 0.7815457413249212, 'precision': 0.6290322580645161, 'recall': 0.4574780058651026, 'f1': 0.5297113752122241, 'roc_auc': 0.8111652067179783}
+2026-07-09 17:07:16,762 INFO ml_pipeline Pipeline complete. Best Model: RandomForest (F1 Score: 0.5490)
+2026-07-09 17:15:03,818 INFO ml_pipeline MLflow tracking URI set to http://mlflow:5000
+2026-07-09 17:15:03,819 INFO ml_pipeline MLflow experiment set to Customer_Attrition_Prediction
+2026-07-09 17:15:03,819 INFO ml_pipeline Starting ML pipeline
+2026-07-09 17:15:03,819 INFO ml_pipeline Loading raw training data from data/raw_data.csv
+2026-07-09 17:15:05,014 INFO ml_pipeline Run RandomForest completed with metrics: {'accuracy': 0.7783911671924291, 'precision': 0.6063829787234043, 'recall': 0.501466275659824, 'f1': 0.5489566613162119, 'roc_auc': 0.7880053273100563}
+2026-07-09 17:15:05,715 INFO ml_pipeline Run LogisticRegression completed with metrics: {'accuracy': 0.7815457413249212, 'precision': 0.6290322580645161, 'recall': 0.4574780058651026, 'f1': 0.5297113752122241, 'roc_auc': 0.8111652067179783}
+2026-07-09 17:15:05,717 INFO ml_pipeline Pipeline complete. Best Model: RandomForest (F1 Score: 0.5490)
+2026-07-09 17:21:38,181 INFO ml_pipeline MLflow tracking URI set to http://mlflow:5000
+2026-07-09 17:21:38,182 INFO ml_pipeline MLflow experiment set to Customer_Attrition_Prediction
+2026-07-09 17:21:38,182 INFO ml_pipeline Starting ML pipeline
+2026-07-09 17:21:38,182 INFO ml_pipeline Loading raw training data from data/raw_data.csv
+2026-07-09 17:21:39,496 INFO ml_pipeline Run RandomForest completed with metrics: {'accuracy': 0.7783911671924291, 'precision': 0.6063829787234043, 'recall': 0.501466275659824, 'f1': 0.5489566613162119, 'roc_auc': 0.7880053273100563}
+2026-07-09 17:21:40,196 INFO ml_pipeline Run LogisticRegression completed with metrics: {'accuracy': 0.7815457413249212, 'precision': 0.6290322580645161, 'recall': 0.4574780058651026, 'f1': 0.5297113752122241, 'roc_auc': 0.8111652067179783}
+2026-07-09 17:21:40,198 INFO ml_pipeline Pipeline complete. Best Model: RandomForest (F1 Score: 0.5490)
+2026-07-11 19:25:56,182 INFO ml_pipeline MLflow tracking URI set to file:///Users/naveendeswal/Documents/Semester 3/Mlops/MLopsAssignment1/aiml_assignment/mlruns
+2026-07-11 19:25:56,182 INFO ml_pipeline MLflow experiment set to Heart_Disease_UCI_Prediction
+2026-07-11 19:25:56,182 INFO ml_pipeline Starting ML pipeline
+2026-07-11 19:25:57,780 INFO ml_pipeline Training LogisticRegression with GridSearchCV
+2026-07-11 19:44:44,416 INFO ml_pipeline MLflow tracking URI set to file:///Users/naveendeswal/Documents/Semester 3/Mlops/MLopsAssignment1/aiml_assignment/mlruns
+2026-07-11 19:44:44,416 INFO ml_pipeline MLflow experiment set to Heart_Disease_UCI_Prediction
+2026-07-11 19:44:44,416 INFO ml_pipeline Starting ML pipeline
+2026-07-11 19:44:44,514 INFO ml_pipeline Training LogisticRegression with GridSearchCV
+2026-07-11 19:44:51,707 INFO ml_pipeline Run LogisticRegression completed with metrics: {'accuracy': 0.8571428571428571, 'precision': 0.8222222222222222, 'recall': 0.8809523809523809, 'f1': 0.8505747126436781, 'roc_auc': 0.9426627793974732}
+2026-07-11 19:44:51,711 INFO ml_pipeline Training RandomForest with GridSearchCV
+2026-07-11 19:44:56,463 INFO ml_pipeline Run RandomForest completed with metrics: {'accuracy': 0.8351648351648352, 'precision': 0.8, 'recall': 0.8571428571428571, 'f1': 0.8275862068965517, 'roc_auc': 0.9261418853255587}
+2026-07-11 19:44:56,466 INFO ml_pipeline Pipeline complete. Best Model: LogisticRegression (F1 Score: 0.8506)
+2026-07-11 19:45:26,041 INFO ml_pipeline MLflow tracking URI set to file:///Users/naveendeswal/Documents/Semester 3/Mlops/MLopsAssignment1/aiml_assignment/mlruns
+2026-07-11 19:45:26,042 INFO ml_pipeline MLflow experiment set to Heart_Disease_UCI_Prediction
+2026-07-11 19:45:26,042 INFO ml_pipeline Starting ML pipeline
+2026-07-11 19:45:26,136 INFO ml_pipeline Training LogisticRegression with GridSearchCV
+2026-07-11 19:45:33,480 INFO ml_pipeline Run LogisticRegression completed with metrics: {'accuracy': 0.8571428571428571, 'precision': 0.8222222222222222, 'recall': 0.8809523809523809, 'f1': 0.8505747126436781, 'roc_auc': 0.9426627793974732}
+2026-07-11 19:45:33,484 INFO ml_pipeline Training RandomForest with GridSearchCV
+2026-07-11 19:45:38,519 INFO ml_pipeline Run RandomForest completed with metrics: {'accuracy': 0.8351648351648352, 'precision': 0.8, 'recall': 0.8571428571428571, 'f1': 0.8275862068965517, 'roc_auc': 0.9261418853255587}
+2026-07-11 19:45:38,522 INFO ml_pipeline Pipeline complete. Best Model: LogisticRegression (F1 Score: 0.8506)
+2026-07-11 19:42:27,833 INFO ml_pipeline MLflow tracking URI set to http://mlflow:5000
+2026-07-11 19:42:27,834 INFO ml_pipeline MLflow experiment set to Heart_Disease_UCI_Prediction
+2026-07-11 19:42:27,834 INFO ml_pipeline Starting ML pipeline
+2026-07-11 19:42:27,904 INFO ml_pipeline Training LogisticRegression with GridSearchCV
+2026-07-11 19:43:05,851 INFO ml_pipeline MLflow tracking URI set to http://mlflow:5000
+2026-07-11 19:43:05,852 INFO ml_pipeline MLflow experiment set to Heart_Disease_UCI_Prediction
+2026-07-11 19:43:05,852 INFO ml_pipeline Starting ML pipeline
+2026-07-11 19:43:05,907 INFO ml_pipeline Training LogisticRegression with GridSearchCV
+2026-07-11 19:43:57,712 INFO ml_pipeline MLflow tracking URI set to http://mlflow:5000
+2026-07-11 19:43:57,713 INFO ml_pipeline MLflow experiment set to Heart_Disease_UCI_Prediction
+2026-07-11 19:43:57,713 INFO ml_pipeline Starting ML pipeline
+2026-07-11 19:43:57,761 INFO ml_pipeline Training LogisticRegression with GridSearchCV
+2026-07-11 20:14:30,877 INFO ml_pipeline MLflow tracking URI set to http://mlflow:5000
+2026-07-11 20:14:30,878 INFO ml_pipeline MLflow experiment set to Heart_Disease_UCI_Prediction
+2026-07-11 20:14:30,878 INFO ml_pipeline Starting ML pipeline
+2026-07-11 20:14:30,930 INFO ml_pipeline Training LogisticRegression with GridSearchCV
+2026-07-11 20:17:23,987 INFO ml_pipeline MLflow tracking URI set to http://mlflow:5000
+2026-07-11 20:17:23,987 INFO ml_pipeline MLflow experiment set to Heart_Disease_UCI_Prediction
+2026-07-11 20:17:23,987 INFO ml_pipeline Starting ML pipeline
+2026-07-11 20:17:24,037 INFO ml_pipeline Training LogisticRegression with GridSearchCV
+2026-07-11 20:17:30,692 INFO ml_pipeline Run LogisticRegression completed with metrics: {'accuracy': 0.8571428571428571, 'precision': 0.8222222222222222, 'recall': 0.8809523809523809, 'f1': 0.8505747126436781, 'roc_auc': 0.9426627793974732}
+2026-07-11 20:17:30,706 INFO ml_pipeline Training RandomForest with GridSearchCV
+2026-07-11 20:17:35,678 INFO ml_pipeline Run RandomForest completed with metrics: {'accuracy': 0.8241758241758241, 'precision': 0.782608695652174, 'recall': 0.8571428571428571, 'f1': 0.8181818181818182, 'roc_auc': 0.9275996112730807}
+2026-07-11 20:17:35,691 INFO ml_pipeline Pipeline complete. Best Model: LogisticRegression (F1 Score: 0.8506)
+2026-07-11 20:25:48,269 INFO ml_pipeline MLflow tracking URI set to http://mlflow:5000
+2026-07-11 20:25:48,270 INFO ml_pipeline MLflow experiment set to Heart_Disease_UCI_Prediction
+2026-07-11 20:25:48,270 INFO ml_pipeline Starting ML pipeline
+2026-07-11 20:25:48,332 INFO ml_pipeline Training LogisticRegression with GridSearchCV
+2026-07-11 20:25:54,074 INFO ml_pipeline Run LogisticRegression completed with metrics: {'accuracy': 0.8571428571428571, 'precision': 0.8222222222222222, 'recall': 0.8809523809523809, 'f1': 0.8505747126436781, 'roc_auc': 0.9426627793974732}
+2026-07-11 20:25:54,088 INFO ml_pipeline Training RandomForest with GridSearchCV
+2026-07-11 20:25:58,958 INFO ml_pipeline Run RandomForest completed with metrics: {'accuracy': 0.8241758241758241, 'precision': 0.782608695652174, 'recall': 0.8571428571428571, 'f1': 0.8181818181818182, 'roc_auc': 0.9275996112730807}
+2026-07-11 20:25:58,972 INFO ml_pipeline Training XGBoost with GridSearchCV
+2026-07-11 20:26:02,545 INFO ml_pipeline Run XGBoost completed with metrics: {'accuracy': 0.8021978021978022, 'precision': 0.7857142857142857, 'recall': 0.7857142857142857, 'f1': 0.7857142857142857, 'roc_auc': 0.8855685131195336}
+2026-07-11 20:26:02,558 INFO ml_pipeline Pipeline complete. Best Model: LogisticRegression (F1 Score: 0.8506)

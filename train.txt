@@ -1,0 +1,28 @@
+docker exec -it aiml_assignment-api-1 python pipelines/ml_pipeline.py
+Loading processed data...
+Target labels identified: [0 1]
+--- RandomForest Evaluation ---
+              precision    recall  f1-score   support
+
+           0       0.82      0.89      0.85       927
+           1       0.61      0.47      0.53       341
+
+    accuracy                           0.78      1268
+   macro avg       0.71      0.68      0.69      1268
+weighted avg       0.76      0.78      0.77      1268
+
+--- LogisticRegression Evaluation ---
+              precision    recall  f1-score   support
+
+           0       0.81      0.90      0.86       927
+           1       0.62      0.44      0.52       341
+
+    accuracy                           0.78      1268
+   macro avg       0.72      0.67      0.69      1268
+weighted avg       0.76      0.78      0.76      1268
+
+/usr/local/lib/python3.10/site-packages/_distutils_hack/__init__.py:15: UserWarning: Distutils was imported before Setuptools, but importing Setuptools also replaces the `distutils` module in `sys.modules`. This may lead to undesirable behaviors or errors. To avoid these issues, avoid using distutils directly, ensure that setuptools is installed in the traditional way (e.g. not an editable install), and/or make sure that setuptools is always imported before distutils.
+  warnings.warn(
+/usr/local/lib/python3.10/site-packages/_distutils_hack/__init__.py:30: UserWarning: Setuptools is replacing distutils. Support for replacing an already imported distutils is deprecated. In the future, this condition will fail. Register concerns at https://github.com/pypa/setuptools/issues/new?template=distutils-deprecation.yml
+  warnings.warn(
+Pipeline complete. Best Model: RandomForest (F1 Score: 0.5289)

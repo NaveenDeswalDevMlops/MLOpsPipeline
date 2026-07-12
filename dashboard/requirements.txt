@@ -1,0 +1,56 @@
+streamlit
+pandas
+numpy
+requests
+plotly
+psutil
+mlflow==2.5.0
+prefect==2.14.4
+griffe
+logger
+
+# Data Processing
+pandas
+numpy
+matplotlib
+# Machine Learning
+scikit-learn
+xgboost
+
+# Experiment Tracking
+mlflow==2.5.0
+
+# Orchestration and dashboard
+prefect==2.14.4
+streamlit
+
+# API
+fastapi
+uvicorn[standard]
+pydantic
+
+# Monitoring
+prometheus-client
+prometheus-fastapi-instrumentator
+
+# Serialization
+joblib
+
+# Visualization (for notebooks)
+matplotlib
+seaborn
+plotly
+
+# Testing
+pytest
+pytest-cov
+httpx<0.28.0
+
+# Linting
+black
+isort
+flake8
+
+# Utilities
+python-dotenv
+requests

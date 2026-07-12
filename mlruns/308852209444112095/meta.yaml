@@ -1,0 +1,9 @@
+artifact_location: file:///Users/naveendeswal/Documents/Semester 3/Mlops/MLopsAssignment1/aiml_assignment/mlruns/308852209444112095
+creation_time: 1783778156180
+effective_trace_archival_retention: null
+experiment_id: '308852209444112095'
+last_update_time: 1783778156180
+lifecycle_stage: active
+name: Heart_Disease_UCI_Prediction
+trace_location: null
+workspace: default

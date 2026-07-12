@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/workspace
+    environment:
+      - PREFECT_API_URL=http://prefect:4200/api
+      - MLFLOW_URL=http://mlflow:5000
+    depends_on:
+      - prefect
+      - mlflow
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+  prefect:
+    image: prefecthq/prefect:2.14.4-python3.10
+    ports:
+      - "4200:4200"
+    volumes:
+      - .:/workspace
+    command: prefect server start --host 0.0.0.0
+
+  mlflow:
+    image: python:3.10-slim
+    ports:
+      - "5010:5000"
+    volumes:
+      - ./mlruns:/workspace/mlruns
+
+    command: >
+      bash -c "pip install mlflow==2.5.0 && mlflow server --host 0.0.0.0 --port 5000"
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: dashboard/Dockerfile
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/workspace
+    depends_on:
+      - api
+      - mlflow
+      - prefect
+    environment:
+      - API_URL=http://api:8000
+      - MLFLOW_URL=http://mlflow:5000
+      - PREFECT_API_URL=http://prefect:4200/api
+      - EXTERNAL_API_URL=http://localhost:8000
+      - EXTERNAL_MLFLOW_URL=http://localhost:5010
+      - EXTERNAL_PREFECT_URL=http://localhost:4200

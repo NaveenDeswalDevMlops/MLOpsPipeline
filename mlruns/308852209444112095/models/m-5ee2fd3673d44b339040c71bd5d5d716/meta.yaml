@@ -1,0 +1,10 @@
+artifact_location: file:///Users/naveendeswal/Documents/Semester 3/Mlops/MLopsAssignment1/aiml_assignment/mlruns/308852209444112095/models/m-5ee2fd3673d44b339040c71bd5d5d716/artifacts
+creation_timestamp: 1783779292779
+experiment_id: '308852209444112095'
+last_updated_timestamp: 1783779294697
+model_id: m-5ee2fd3673d44b339040c71bd5d5d716
+model_type: null
+name: best_estimator
+source_run_id: 69753eeeb4e940edb54de42ae59ab273
+status: 2
+status_message: null
