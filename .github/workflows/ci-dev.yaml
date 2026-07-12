@@ -1,0 +1,216 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [dev]
+  pull_request:
+    branches: [dev]
+  workflow_dispatch:
+
+env:
+  PYTHON_VERSION: "3.10"
+  API_IMAGE_NAME: heart-disease-api
+  DASHBOARD_IMAGE_NAME: heart-disease-dashboard
+  MODEL_SERVICE_IMAGE_NAME: heart-disease-model-service
+  IMAGE_TAG: ${{ github.sha }}
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install flake8
+
+      - name: Run linting
+        run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run pytest with coverage
+        run: pytest tests/ -q --cov=app --cov=pipelines --cov-report=term-missing --cov-report=xml
+
+  validate-fastapi-imports:
+    name: Validate imports
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Validate service imports
+        run: |
+          python -c "from app.main import app; print(app.title)"
+          python -c "import streamlit, mlflow, prefect; print('streamlit', streamlit.__version__); print('mlflow', mlflow.__version__); print('prefect', prefect.__version__)"
+
+  validate-model-artifacts:
+    name: Validate model artifacts
+    runs-on: ubuntu-latest
+    needs: validate-fastapi-imports
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Check required model artifacts
+        run: |
+          test -s models/model.joblib
+          test -s models/pipeline.joblib
+          python - <<'PY'
+          from pathlib import Path
+          files = [Path('models/model.joblib'), Path('models/pipeline.joblib')]
+          for path in files:
+              assert path.exists() and path.stat().st_size > 0, f"Missing or empty artifact: {path}"
+          print('Validated model artifacts successfully.')
+          PY
+
+  validate-k8s-manifests:
+    name: Validate Kubernetes manifests
+    runs-on: ubuntu-latest
+    needs: validate-model-artifacts
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pyyaml
+
+      - name: Parse Kubernetes YAML manifests
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import yaml
+
+          manifest_files = [
+              Path('k8s/namespace.yaml'),
+              Path('k8s/configmap.yaml'),
+              Path('k8s/deployment.yaml'),
+              Path('k8s/service.yaml'),
+              Path('k8s/ingress.yaml'),
+              Path('k8s/hpa.yaml'),
+              Path('k8s/persistent-volume.yaml'),
+          ]
+
+          for manifest in manifest_files:
+              with manifest.open() as fh:
+                  docs = list(yaml.safe_load_all(fh))
+              assert docs, f"No YAML documents found in {manifest}"
+              for doc in docs:
+                  if doc is None:
+                      continue
+                  assert doc.get('apiVersion'), f"Missing apiVersion in {manifest}"
+                  assert doc.get('kind'), f"Missing kind in {manifest}"
+
+          print('Validated Kubernetes manifests successfully.')
+          PY
+
+  build-and-package:
+    name: Build Docker images
+    runs-on: ubuntu-latest
+    needs: validate-k8s-manifests
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build API Docker image
+        run: docker build -t ${{ env.API_IMAGE_NAME }}:${{ env.IMAGE_TAG }} .
+
+      - name: Build Dashboard Docker image
+        run: docker build -f dashboard/Dockerfile -t ${{ env.DASHBOARD_IMAGE_NAME }}:${{ env.IMAGE_TAG }} .
+
+      - name: Build Model Service Docker image
+        run: docker build -f model_service/Dockerfile -t ${{ env.MODEL_SERVICE_IMAGE_NAME }}:${{ env.IMAGE_TAG }} .
+
+      - name: Tag API image as latest
+        run: docker tag ${{ env.API_IMAGE_NAME }}:${{ env.IMAGE_TAG }} ${{ env.API_IMAGE_NAME }}:latest
+
+      - name: Tag Dashboard image as latest
+        run: docker tag ${{ env.DASHBOARD_IMAGE_NAME }}:${{ env.IMAGE_TAG }} ${{ env.DASHBOARD_IMAGE_NAME }}:latest
+
+      - name: Tag Model Service image as latest
+        run: docker tag ${{ env.MODEL_SERVICE_IMAGE_NAME }}:${{ env.IMAGE_TAG }} ${{ env.MODEL_SERVICE_IMAGE_NAME }}:latest
+
+      - name: Save API image artifact
+        run: docker save ${{ env.API_IMAGE_NAME }}:${{ env.IMAGE_TAG }} -o heart-disease-api.tar
+
+      - name: Save Dashboard image artifact
+        run: docker save ${{ env.DASHBOARD_IMAGE_NAME }}:${{ env.IMAGE_TAG }} -o heart-disease-dashboard.tar
+
+      - name: Save Model Service image artifact
+        run: docker save ${{ env.MODEL_SERVICE_IMAGE_NAME }}:${{ env.IMAGE_TAG }} -o heart-disease-model-service.tar
+
+      - name: Upload API build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: heart-disease-api-image
+          path: heart-disease-api.tar
+
+      - name: Upload Dashboard build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: heart-disease-dashboard-image
+          path: heart-disease-dashboard.tar
+
+      - name: Upload Model Service build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: heart-disease-model-service-image
+          path: heart-disease-model-service.tar
