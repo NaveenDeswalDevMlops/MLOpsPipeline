@@ -2,11 +2,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: heart-disease-api
+  namespace: heart-disease
   labels:
     app: heart-disease-api
     version: "1.0.0"
 spec:
   replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
   selector:
     matchLabels:
       app: heart-disease-api
@@ -22,6 +28,19 @@ spec:
           ports:
             - containerPort: 8000
               protocol: TCP
+          env:
+            - name: PYTHONUNBUFFERED
+              value: "1"
+            - name: WORKSPACE
+              value: "/workspace"
+            - name: API_URL
+              value: "http://heart-disease-api-service:80"
+            - name: MLFLOW_URL
+              value: "http://host.minikube.internal:5000"
+            - name: PREFECT_API_URL
+              value: "http://host.minikube.internal:4200/api"
+            - name: MODEL_SERVICE_URL
+              value: "http://heart-disease-model-service:8001"
           livenessProbe:
             httpGet:
               path: /health
@@ -35,6 +54,7 @@ spec:
               port: 8000
             initialDelaySeconds: 5
             periodSeconds: 10
+            failureThreshold: 3
           resources:
             requests:
               memory: "256Mi"
@@ -42,6 +62,119 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "500m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heart-disease-model-service
+  namespace: heart-disease
+  labels:
+    app: heart-disease-model-service
+    version: "1.0.0"
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: heart-disease-model-service
+  template:
+    metadata:
+      labels:
+        app: heart-disease-model-service
+    spec:
+      containers:
+        - name: heart-disease-model-service
+          image: heart-disease-model-service:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8001
+              protocol: TCP
           env:
             - name: PYTHONUNBUFFERED
               value: "1"
+            - name: WORKSPACE
+              value: "/workspace"
+            - name: MLFLOW_TRACKING_URI
+              value: "http://host.minikube.internal:5000"
+            - name: MLFLOW_MODEL_NAME
+              value: "HeartDiseaseUCIModel"
+            - name: MLFLOW_MODEL_STAGE
+              value: "Production"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8001
+            initialDelaySeconds: 15
+            periodSeconds: 30
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8001
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            failureThreshold: 3
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heart-disease-dashboard
+  namespace: heart-disease
+  labels:
+    app: heart-disease-dashboard
+    version: "1.0.0"
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: heart-disease-dashboard
+  template:
+    metadata:
+      labels:
+        app: heart-disease-dashboard
+    spec:
+      containers:
+        - name: heart-disease-dashboard
+          image: heart-disease-dashboard:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8501
+              protocol: TCP
+          env:
+            - name: WORKSPACE
+              value: "/workspace"
+            - name: API_URL
+              value: "http://heart-disease-api-service:80"
+            - name: MLFLOW_URL
+              value: "http://host.minikube.internal:5000"
+            - name: PREFECT_API_URL
+              value: "http://host.minikube.internal:4200/api"
+            - name: EXTERNAL_API_URL
+              value: "http://heart-disease.local"
+            - name: EXTERNAL_MLFLOW_URL
+              value: "http://host.minikube.internal:5000"
+            - name: EXTERNAL_PREFECT_URL
+              value: "http://host.minikube.internal:4200"
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"

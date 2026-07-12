@@ -1,9 +1,11 @@
+import os
 from datetime import datetime, timezone
 from pathlib import Path
 from time import perf_counter
 
 import joblib
 import pandas as pd
+import requests
 from fastapi import FastAPI, HTTPException, Request, status
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
@@ -23,6 +25,7 @@ MODEL_PATH = MODEL_DIR / "model.joblib"
 LEGACY_MODEL_PATH = MODEL_DIR / "best_model.pkl"
 PIPELINE_STATUS_PATH = Path("artifacts/pipeline_status.json")
 MODEL_VERSION = "v1.0-heart-uci"
+MODEL_SERVICE_URL = os.getenv("MODEL_SERVICE_URL", "").rstrip("/")
 
 
 @app.exception_handler(RequestValidationError)
@@ -97,6 +100,18 @@ def _prediction_probability(model, features: pd.DataFrame) -> float:
 
 @app.post("/predict", response_model=PredictionResponse)
 def predict(request: PredictionRequest):
+    if MODEL_SERVICE_URL:
+        try:
+            response = requests.post(
+                f"{MODEL_SERVICE_URL}/predict",
+                json=request.model_dump(),
+                timeout=5,
+            )
+            response.raise_for_status()
+            return PredictionResponse(**response.json())
+        except requests.RequestException:
+            pass
+
     start_time = perf_counter()
     model_file = MODEL_PATH if MODEL_PATH.exists() else LEGACY_MODEL_PATH
     if not model_file.exists():

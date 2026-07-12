@@ -94,3 +94,13 @@
 2026-07-11 20:25:58,972 INFO ml_pipeline Training XGBoost with GridSearchCV
 2026-07-11 20:26:02,545 INFO ml_pipeline Run XGBoost completed with metrics: {'accuracy': 0.8021978021978022, 'precision': 0.7857142857142857, 'recall': 0.7857142857142857, 'f1': 0.7857142857142857, 'roc_auc': 0.8855685131195336}
 2026-07-11 20:26:02,558 INFO ml_pipeline Pipeline complete. Best Model: LogisticRegression (F1 Score: 0.8506)
+2026-07-12 09:00:49,461 INFO ml_pipeline MLflow tracking URI set to http://mlflow:5000
+2026-07-12 09:00:49,461 INFO ml_pipeline MLflow experiment set to Heart_Disease_UCI_Prediction
+2026-07-12 09:00:49,461 INFO ml_pipeline Starting ML pipeline
+2026-07-12 09:00:49,486 INFO ml_pipeline Training LogisticRegression with GridSearchCV
+2026-07-12 09:00:53,908 INFO ml_pipeline Run LogisticRegression completed with metrics: {'accuracy': 0.8571428571428571, 'precision': 0.8222222222222222, 'recall': 0.8809523809523809, 'f1': 0.8505747126436781, 'roc_auc': 0.9426627793974732}
+2026-07-12 09:00:53,916 INFO ml_pipeline Training RandomForest with GridSearchCV
+2026-07-12 09:00:56,290 INFO ml_pipeline Run RandomForest completed with metrics: {'accuracy': 0.8241758241758241, 'precision': 0.782608695652174, 'recall': 0.8571428571428571, 'f1': 0.8181818181818182, 'roc_auc': 0.9275996112730807}
+2026-07-12 09:00:56,297 INFO ml_pipeline Training XGBoost with GridSearchCV
+2026-07-12 09:00:58,056 INFO ml_pipeline Run XGBoost completed with metrics: {'accuracy': 0.8021978021978022, 'precision': 0.7857142857142857, 'recall': 0.7857142857142857, 'f1': 0.7857142857142857, 'roc_auc': 0.8855685131195336}
+2026-07-12 09:00:58,084 INFO ml_pipeline Pipeline complete. Best Model: LogisticRegression (F1 Score: 0.8506)

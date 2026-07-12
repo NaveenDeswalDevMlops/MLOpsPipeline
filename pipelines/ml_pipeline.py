@@ -214,6 +214,7 @@ def run_ml_pipeline():
     best_model_name = ""
     best_pipeline = None
     best_metrics = {}
+    best_run_id = None
 
     for name, (base_model, param_grid) in models.items():
         start_time = time.perf_counter()
@@ -275,6 +276,7 @@ def run_ml_pipeline():
                 best_model_name = name
                 best_pipeline = best_estimator
                 best_metrics = metrics
+                best_run_id = mlflow.active_run().info.run_id
 
             LOG.info("Run %s completed with metrics: %s", name, metrics)
 
@@ -286,6 +288,31 @@ def run_ml_pipeline():
     joblib.dump(best_pipeline, best_pipeline_path)
     joblib.dump(best_pipeline.named_steps["preprocessor"], Path("models/pipeline.joblib"))
     joblib.dump(best_pipeline, Path("models/best_model.pkl"))
+
+    model_registry_name = os.getenv("MLFLOW_MODEL_NAME", "HeartDiseaseUCIModel")
+    if best_run_id is not None:
+        client = mlflow.tracking.MlflowClient()
+        registered_model = mlflow.register_model(
+            model_uri=f"runs:/{best_run_id}/best_estimator",
+            name=model_registry_name,
+        )
+        client.transition_model_version_stage(
+            name=model_registry_name,
+            version=registered_model.version,
+            stage="Production",
+            archive_existing_versions=True,
+        )
+        client.set_registered_model_alias(
+            model_registry_name,
+            "Production",
+            registered_model.version,
+        )
+        client.set_model_version_tag(
+            model_registry_name,
+            registered_model.version,
+            "Stage",
+            "Prod",
+        )
 
     summary_payload = {
         "best_model": best_model_name,

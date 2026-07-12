@@ -5,4 +5,8 @@ metadata:
   namespace: heart-disease
 data:
   PYTHONUNBUFFERED: "1"
+  WORKSPACE: "/workspace"
+  API_URL: "http://localhost:8000"
+  MLFLOW_URL: "http://mlflow:5000"
+  PREFECT_API_URL: "http://prefect:4200/api"
   MLFLOW_TRACKING_URI: "http://mlflow:5000"

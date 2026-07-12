@@ -1,9 +1,7 @@
 {
-  "last_pipeline_run": "2026-07-12T06:09:01.287997+00:00",
-  "rows_processed": 303,
-  "features_processed": 14,
-  "missing_values_found": 6,
-  "correlation_matrix_generated": true,
-  "eda_status": "completed",
-  "pipeline_status": "completed"
+  "best_model": "LogisticRegression",
+  "best_f1": 0.8505747126436781,
+  "best_roc_auc": 0.9426627793974732,
+  "model_version": "v1.0-heart-uci",
+  "timestamp": "2026-07-12T09:00:58.084074+00:00"
 }

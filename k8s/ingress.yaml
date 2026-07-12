@@ -3,8 +3,8 @@ kind: Ingress
 metadata:
   name: heart-disease-api-ingress
   namespace: heart-disease
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+  labels:
+    app: heart-disease-api
 spec:
   ingressClassName: nginx
   rules:
@@ -18,3 +18,10 @@ spec:
                 name: heart-disease-api-service
                 port:
                   number: 80
+          - path: /dashboard
+            pathType: Prefix
+            backend:
+              service:
+                name: heart-disease-dashboard-service
+                port:
+                  number: 8501
