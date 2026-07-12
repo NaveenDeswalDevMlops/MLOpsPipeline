@@ -3,6 +3,7 @@ uvicorn
 pandas
 numpy
 scikit-learn
+setuptools<81
 prefect==2.14.4
 mlflow==2.5.0
 matplotlib

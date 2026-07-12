@@ -124,3 +124,7 @@
 2026-07-12 06:08:55,242 INFO data_pipeline Starting Data Pre-processing
 2026-07-12 06:08:55,351 INFO data_pipeline Generating EDA reports
 2026-07-12 06:09:01,289 INFO data_pipeline Pipeline Completed Successfully
+2026-07-12 11:18:06,733 INFO data_pipeline Starting Data Ingestion...
+2026-07-12 11:18:06,837 INFO data_pipeline Starting Data Pre-processing
+2026-07-12 11:18:06,983 INFO data_pipeline Generating EDA reports
+2026-07-12 11:18:13,096 INFO data_pipeline Pipeline Completed Successfully
