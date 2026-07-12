@@ -40,6 +40,8 @@ services:
       dockerfile: dashboard/Dockerfile
     ports:
       - "8501:8501"
+    extra_hosts:
+      - "heart-disease.local:host-gateway"
     volumes:
       - .:/workspace
     depends_on:

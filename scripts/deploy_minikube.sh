@@ -37,11 +37,20 @@ if ! docker image inspect "$MODEL_SERVICE_IMAGE" >/dev/null 2>&1; then
   docker build -f model_service/Dockerfile -t "$MODEL_SERVICE_IMAGE" .
 fi
 
+DASHBOARD_IMAGE="heart-disease-dashboard:latest"
+if ! docker image inspect "$DASHBOARD_IMAGE" >/dev/null 2>&1; then
+  echo "Building dashboard Docker image for Minikube..."
+  eval "$(minikube docker-env)"
+  docker build -f dashboard/Dockerfile -t "$DASHBOARD_IMAGE" .
+fi
+
 minikube image load "$IMAGE_NAME"
 minikube image load "$MODEL_SERVICE_IMAGE"
+minikube image load "$DASHBOARD_IMAGE"
 
 kubectl apply -f k8s/namespace.yaml
 kubectl apply -f k8s/configmap.yaml
+kubectl apply -f k8s/persistent-volume.yaml
 kubectl apply -f k8s/deployment.yaml
 kubectl apply -f k8s/service.yaml
 kubectl apply -f k8s/ingress.yaml

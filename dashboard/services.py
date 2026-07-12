@@ -11,9 +11,12 @@ import psutil
 import requests
 from mlflow.tracking import MlflowClient
 
+from project_logger import get_logger
+
 from .config import (
     API_URL,
     EDA_DIR,
+    EXTERNAL_API_URL,
     HEALTH_URL,
     LOG_FILES,
     MLFLOW_URL,
@@ -28,30 +31,45 @@ from .config import (
     RAW_DATA_PATH,
 )
 
+API_LOGGER = get_logger("dashboard_api_service", "api.log")
+PREDICTION_LOGGER = get_logger("dashboard_prediction_service", "prediction.log")
+
 
 def safe_json_get(url: str, timeout: int = 5) -> Any:
+    API_LOGGER.info("Fetching JSON metadata from %s", url)
     try:
         response = requests.get(url, timeout=timeout)
         response.raise_for_status()
-        return response.json()
+        payload = response.json()
+        API_LOGGER.info("JSON request succeeded for %s with status %s", url, response.status_code)
+        return payload
     except ValueError:
-        return {"error": "Invalid JSON response", "url": url, "text": response.text}
+        error_payload = {"error": "Invalid JSON response", "url": url, "text": response.text}
+        API_LOGGER.warning("Invalid JSON response from %s: %s", url, response.text[:200])
+        return error_payload
     except Exception as exc:
+        API_LOGGER.warning("JSON request failed for %s: %s", url, exc)
         return {"error": str(exc), "url": url}
 
 
 def safe_health_get(url: str, timeout: int = 5) -> Any:
+    API_LOGGER.info("Health probing %s", url)
     try:
         response = requests.get(url, timeout=timeout)
         response.raise_for_status()
         content_type = response.headers.get("content-type", "")
         if "application/json" in content_type:
-            return response.json()
+            payload = response.json()
+            API_LOGGER.info("Health probe succeeded for %s with status %s", url, response.status_code)
+            return payload
         text = response.text.strip()
         if text:
+            API_LOGGER.info("Health probe succeeded for %s with textual payload", url)
             return text
+        API_LOGGER.info("Health probe succeeded for %s with empty payload", url)
         return True
     except Exception as exc:
+        API_LOGGER.warning("Health probe failed for %s: %s", url, exc)
         return {"error": str(exc), "url": url}
 
 
@@ -290,22 +308,47 @@ def init_prediction_db() -> None:
             id INTEGER PRIMARY KEY,
             timestamp TEXT,
             age INTEGER,
-            tenure INTEGER,
-            monthly_charges REAL,
-            total_charges REAL,
-            contract TEXT,
-            partner TEXT,
-            dependents TEXT,
-            internet_service TEXT,
-            payment_method TEXT,
-            gender TEXT,
-            senior_citizen TEXT,
+            sex INTEGER,
+            cp INTEGER,
+            trestbps REAL,
+            chol REAL,
+            fbs INTEGER,
+            restecg INTEGER,
+            thalach REAL,
+            exang INTEGER,
+            oldpeak REAL,
+            slope INTEGER,
+            ca INTEGER,
+            thal INTEGER,
             prediction INTEGER,
             probability REAL,
             risk_level TEXT
         )
         """
     )
+    conn.commit()
+
+    cursor.execute("PRAGMA table_info(predictions)")
+    existing_columns = {row[1] for row in cursor.fetchall()}
+    required_columns = {
+        "age": "INTEGER",
+        "sex": "INTEGER",
+        "cp": "INTEGER",
+        "trestbps": "REAL",
+        "chol": "REAL",
+        "fbs": "INTEGER",
+        "restecg": "INTEGER",
+        "thalach": "REAL",
+        "exang": "INTEGER",
+        "oldpeak": "REAL",
+        "slope": "INTEGER",
+        "ca": "INTEGER",
+        "thal": "INTEGER",
+    }
+    for column_name, column_type in required_columns.items():
+        if column_name not in existing_columns:
+            cursor.execute(f"ALTER TABLE predictions ADD COLUMN {column_name} {column_type}")
+
     conn.commit()
     conn.close()
 
@@ -314,35 +357,31 @@ def save_prediction(record: Dict[str, Any]) -> None:
     init_prediction_db()
     conn = sqlite3.connect(PREDICTION_DB)
     cursor = conn.cursor()
-    cursor.execute(
-        """
-        INSERT INTO predictions (
-            timestamp, age, tenure, monthly_charges, total_charges,
-            contract, partner, dependents, internet_service,
-            payment_method, gender, senior_citizen,
-            prediction, probability, risk_level
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """,
-        [
-            record.get("timestamp"),
-            record.get("age"),
-            record.get("tenure"),
-            record.get("monthly_charges"),
-            record.get("total_charges"),
-            record.get("contract"),
-            record.get("partner"),
-            record.get("dependents"),
-            record.get("internet_service"),
-            record.get("payment_method"),
-            record.get("gender"),
-            record.get("senior_citizen"),
-            record.get("prediction"),
-            record.get("probability"),
-            record.get("risk_level"),
-        ],
-    )
+
+    columns = [
+        "timestamp", "age", "sex", "cp", "trestbps", "chol", "fbs",
+        "restecg", "thalach", "exang", "oldpeak", "slope", "ca", "thal",
+        "prediction", "probability", "risk_level",
+    ]
+    insert_columns = [column for column in columns if column in record]
+    if not insert_columns:
+        raise ValueError("Prediction record does not contain any supported fields.")
+
+    placeholders = ", ".join("?" for _ in insert_columns)
+    sql = f"INSERT INTO predictions ({', '.join(insert_columns)}) VALUES ({placeholders})"
+    values = [record.get(column) for column in insert_columns]
+
+    cursor.execute(sql, values)
     conn.commit()
     conn.close()
+
+    PREDICTION_LOGGER.info(
+        "Prediction saved: age=%s, risk=%s, prediction=%s, probability=%.4f",
+        record.get("age"),
+        record.get("risk_level"),
+        record.get("prediction"),
+        float(record.get("probability") or 0.0),
+    )
 
 
 def get_prediction_history() -> pd.DataFrame:
@@ -355,15 +394,23 @@ def get_prediction_history() -> pd.DataFrame:
 
 def make_prediction(payload: Dict[str, Any]) -> Dict[str, Any]:
     candidate_urls = [f"{API_URL}/predict"]
+    if EXTERNAL_API_URL and EXTERNAL_API_URL != API_URL:
+        candidate_urls.append(f"{EXTERNAL_API_URL}/predict")
     if "localhost" in API_URL:
         candidate_urls.append("http://api:8000/predict")
+    candidate_urls = list(dict.fromkeys(candidate_urls))
+
     last_error = None
     for url in candidate_urls:
         try:
+            PREDICTION_LOGGER.info("Submitting prediction request to %s with payload=%s", url, payload)
             response = requests.post(url, json=payload, timeout=10)
             response.raise_for_status()
-            return response.json()
+            result = response.json()
+            PREDICTION_LOGGER.info("Prediction response from %s: %s", url, result)
+            return result
         except Exception as exc:
+            PREDICTION_LOGGER.error("Prediction request failed for %s: %s", url, exc)
             last_error = exc
     raise last_error if last_error is not None else RuntimeError("Failed to call prediction endpoint")
 

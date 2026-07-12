@@ -2,10 +2,11 @@ import os
 from pathlib import Path
 
 WORKSPACE = Path(os.getenv("WORKSPACE", "/workspace"))
-API_URL = os.getenv("API_URL", "http://localhost:8000")
+#API_URL = os.getenv("API_URL", "http://localhost:8000")
+API_URL = "http://heart-disease.local"
 MLFLOW_URL = os.getenv("MLFLOW_URL", "http://localhost:5010")
 
-PREFECT_API_URL = os.getenv("PREFECT_API_URL", "http://localhost:4200/api")
+PREFECT_API_URL = os.getenv("PREFECT_API_URL", "http://prefect:4200/api")
 EXTERNAL_API_URL = os.getenv("EXTERNAL_API_URL", "http://localhost:8000")
 EXTERNAL_MLFLOW_URL = os.getenv("EXTERNAL_MLFLOW_URL", "http://localhost:5010")
 EXTERNAL_PREFECT_URL = os.getenv("EXTERNAL_PREFECT_URL", "http://localhost:4200")
