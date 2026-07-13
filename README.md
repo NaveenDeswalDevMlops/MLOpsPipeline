@@ -1,3 +1,4 @@
+<img width="1536" height="1024" alt="Arch" src="https://github.com/user-attachments/assets/7b86a818-870b-4e06-a48c-61ea0ef11cf5" />
 # Heart Disease UCI Prediction
 
 ## Overview
