@@ -320,3 +320,7 @@ The GitHub Actions workflow in `.github/workflows/ci.yml` performs the following
 - Re-run `make pipeline` whenever data preprocessing changes.
 - Re-run `make train` whenever training logic or the model should be updated.
 - Use `make down` to stop containers when you are done.
+- Check minikube is started and running fine
+- Check k8s cluster is up and running `kubectl get pods,svc,ingress,hpa -n heart-disease`
+- Check minikube ingress and enable `sudo minikube tunnel` if required.
+- Check /etc/hosts and add the relevant minikube ip's and url's if needed.
